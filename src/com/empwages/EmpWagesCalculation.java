@@ -4,7 +4,7 @@ import com.random_generator.Randomise;
 
 public class EmpWagesCalculation {
 
-	public static void main(String[] args) {
+	public static void calculate(){
 		Randomise simulate=new Randomise();
 		
 		int MAXIMUM_WORK_HOURS = 100;
@@ -27,7 +27,11 @@ public class EmpWagesCalculation {
 		
 		System.out.println("Total hours worked is " + workhours);
 		System.out.println("Total earnings of the employee is Rs." + totalWage);
-		
+
+	}
+	
+	public static void main(String[] args) {
+		calculate();	
 		
 	}
 }
