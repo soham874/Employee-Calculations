@@ -1,6 +1,6 @@
 package com.random_generator;
 
-public class randomise {
+public class Randomise {
 	public double getworkhours( ) {
 		
 		int IS_FULL_DAY = 8;
