@@ -1,11 +1,13 @@
 package com.random_generator;
 
 public class randomise {
+	
+	public static int IS_FULL_DAY = 8;
+	public static int IS_HALF_DAY = 4;
+	public static int WAGE_PER_HOUR = 0;
+	
 	public double getworkhours( ) {
-		
-		int IS_FULL_DAY = 8;
-		int IS_HALF_DAY = 4;
-		
+	
 		double empHours = 0;
 		double check = Math.floor(Math.random() * 10 % 3);
 		switch ((int) check) {
@@ -25,7 +27,7 @@ public class randomise {
 	public double getWage(double empHours) {
 				
 		double wage = 0;
-		int WAGE_PER_HOUR = 20;
+		
 		wage = empHours * WAGE_PER_HOUR;
 		return wage;
 	}
