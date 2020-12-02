@@ -1,6 +1,6 @@
 package com.random_generator;
 
-public class randomise {
+public class Randomise {
 	
 	public static int IS_FULL_DAY = 8;
 	public static int IS_HALF_DAY = 4;

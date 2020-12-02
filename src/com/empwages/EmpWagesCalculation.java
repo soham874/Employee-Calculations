@@ -2,15 +2,17 @@ package com.empwages;
 
 import java.util.Scanner;
 
-import com.random_generator.randomise;
+import com.random_generator.Randomise;
 
 public class EmpWagesCalculation {
 
 	public static int MAXIMUM_WORK_HOURS = 0;
 	public static int MAXIMUM_WORK_DAYS = 0;
-
+	public static double[] companyWages = new double[100];
+	public static int position = 0;
+	
 	public static void calculate() {
-		randomise simulate = new randomise();
+		Randomise simulate = new Randomise();
 
 		int workdays = 1;
 		int workhours = 0;
@@ -30,10 +32,12 @@ public class EmpWagesCalculation {
 
 		System.out.println("Total hours worked is " + workhours);
 		System.out.println("Total earnings of the employee is Rs." + totalWage);
-
+		companyWages[position] = totalWage;
+		position++;
 	}
 
 	public static void DataEntry() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Enter Company name : ");
@@ -43,31 +47,28 @@ public class EmpWagesCalculation {
 		System.out.println("Enter maximum allowable working days");
 		MAXIMUM_WORK_DAYS = sc.nextInt();
 		System.out.println("Enter wage per hour");
-		randomise.WAGE_PER_HOUR = sc.nextInt();
-		System.out.println('\n' + "~~~~~~~~~~~~~~~~~~~~~~For company " + companyName + " ~~~~~~~~~~~~~~~~~~~~~~");
+		Randomise.WAGE_PER_HOUR = sc.nextInt();
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~For company " + companyName + " ~~~~~~~~~~~~~~~~~~~~~~");
 		calculate();
-		sc.close();
+
 	}
 
 	public static void main(String[] args) {
-		repeat();
-	}
 
-	private static void repeat() {
-	
-			Scanner sc = new Scanner(System.in);
-			//DataEntry();
-			System.out.println('\n' + "Enter 1 to retry and 0 to exit");
-			int choice = sc.nextInt();
-			switch (choice) {
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		DataEntry();
+		while (2 > 1) {
+			System.out.println('\n'+"enter 1 to retry and 0 to quit");
+			int ch = sc.nextInt();
+			switch (ch) {
 			case 1:
 				DataEntry();
-				repeat();
 				break;
-			case 2:
+			default:
+				System.out.println('\n'+"Thank You");
 				System.exit(0);
 			}
-			sc.close();
 		}
-		
 	}
+}
