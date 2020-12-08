@@ -7,19 +7,22 @@ public class EmpWagesCalculation {
 
 	public static int MAXIMUM_WORK_HOURS = 0;
 	public static int MAXIMUM_WORK_DAYS = 0;
-	public static ArrayList<Double> companyWages = new ArrayList<Double>();
-	public static ArrayList<ArrayList<Double> > dailyWages = new ArrayList<ArrayList<Double>>();
-	public static ArrayList<String> companyName = new ArrayList<String>();
+	public static ArrayList<Double> companyWages;
+	public static ArrayList<ArrayList<Double>> dailyWages;
+	public static ArrayList<String> companyName;
 	
 	public static void calculate(String companyNameInput,int maximumWorkHours,int maximumWorkDays, int wagePerHour) {
 		
 		dailyWages.add(new ArrayList<Double>());
 		MAXIMUM_WORK_HOURS = maximumWorkHours;
 		MAXIMUM_WORK_DAYS = maximumWorkDays;
-		companyName.add(companyNameInput);
-		Randomise.WAGE_PER_HOUR = wagePerHour;
 		
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~For company " + companyName.get(companyName.size()-1) + " ~~~~~~~~~~~~~~~~~~~~~~");
+		Randomise.WAGE_PER_HOUR = wagePerHour;
+		CompanyEmpWage obj = new CompanyEmpWage();
+		
+		obj.addValues(companyNameInput);
+		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~For company " + companyNameInput + " ~~~~~~~~~~~~~~~~~~~~~~");
 		Randomise simulate = new Randomise();
 
 		int workdays = 1;
@@ -39,9 +42,11 @@ public class EmpWagesCalculation {
 			workdays++;
 			
 		}
+		
+		obj.addValues(totalWage);
 		//System.out.println(dailyWages);
 		System.out.println("Total hours worked is " + workhours);
 		System.out.println("Total earnings of the employee is Rs." + totalWage);
-		companyWages.add(totalWage);
+		
 	}
 }
